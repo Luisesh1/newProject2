@@ -1,0 +1,82 @@
+create database newProject;
+use newProject;
+
+create table ranks(
+	id_rank int,
+	name varchar(50)
+)
+
+create table users(
+	id_user int,
+	name varchar(50),
+	lastname varchar(50),
+	birthDate datetime,
+	id_rank int
+)
+
+create table skills(
+	id_skill int,
+	name varchar(50),
+	id_user int
+)
+
+create table categories(
+	id_category int,
+	name varchar(50),
+	id_father int --apunta a la tabla categories
+)
+
+create table experience(
+	id_experience int,
+	id_category int,
+	value int,
+	id_user int
+)
+
+create table groups(
+	id_group int,
+	name varchar(50)
+)
+
+create table users_groups(
+	id_group int,
+	id_users int
+)
+
+create table activities(
+	id_activity int,
+	a_description varchar(100),
+	title varchar(50),
+	value int,
+	a_status  char(1),
+	id_project int
+)
+create table projects(
+	id_project int,
+	p_status char(1),
+	visibility char(1),
+	id_category int,
+	title varchar(50),
+	p_description varchar(100),
+	p_type varchar(50)
+)
+
+create table users_projects(
+	id_user int,
+	id_project int
+)
+
+class Usuario < ActiveRecord::Base
+  has_many :direccions
+  has_many :vendedors, through: :direccions
+end
+
+class Direccion < ActiveRecord::Base
+  belongs_to :vendedor
+  belongs_to :usuario
+end
+
+class Vendedor < ActiveRecord::Base
+  has_many :direccions
+  has_many :usuarios, through: :direccions
+end

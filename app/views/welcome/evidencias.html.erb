@@ -1,0 +1,82 @@
+<%
+  img = Dir.glob("app/assets/images/*").sort{|x,y| x.split("im").last.split(".")[0].to_i<=>y.split("im").last.split(".")[0].to_i}
+  desc=["Se ingresa a la pagina de digital ocean utilizando un correo y contraseña previamente registrados",
+        "Se seleciona crear droplet como accion siguente se despliega la siguiente pantalla",
+        "Se da click en one click aplication y se seleciona ruby on rails con base de datos postgresql",
+        "como acto siguiente se seleciona la opcion de pago '5 dollar per mouth' y un servidor en estados unidos",
+        "se le asigna un nombre a el droplet (el cual no puede contener espacios)",
+        "Como se puede obserbar en la imagen el droplet ya esta creado y nos proporciona una ip para acceder",
+        "ingresamos a el correo de nuestra cuenta de digital ocean para obtener el username y password del droplet",
+        "Una vez que ya tenemos el usuario y contraseña entramos al programa putty con nuestra ip y el puerto 22",
+        "Despues de el putty se conecte a la IP se deben proporcionar el usuario y la contraseña",
+        "Cuando se conecte al servidor este pedira un cambio de contraseña y despues deplegara informacion de rails",
+        "El siguiente paso es acceder la carpeta de rails con el comando '~rails'",
+        "Se crea un espacio en github el cual servira de apoyo para mandar el proyecto a digital ocean",
+        "Se procede a crear la base de datos utilizando los generadores de rails la cual se sube a github",
+        "Se clona el proyecto usando el comando git clone 'direccion' y esto subira los archivos a digital ocean",
+        "Se entra al directorio con el comando cd nombreDirectorio ",
+        "Se ajecuta el precompilado de los assets y la migracion de la base de datos"]%>
+
+  <div class="container">
+    <div class="row">
+      <h2 class="card-panel  z-depth-4" align="center">Proceso para subir una pagina con base de datos a digital ocean</h2>
+      <br><br>
+      <%img.each_with_index do |item,index|%>
+        <%next unless item.split("/").last=~ /im\d/%>
+        <%aux=item.split("/").last%>
+        <div class="col s12 m6 l6">
+          <div class="card  z-depth-2">
+            <div class="card-image waves-effect waves-block waves-light">
+              <%=link_to image_tag(aux),image_path(aux)%>
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Paso <%=index%><i class="material-icons right">more_vert</i></span>
+              <p><%=desc[index-1]%></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Paso <%=index%><i class="material-icons right">close</i></span>
+              <p><%=desc[index-1]%></p>
+            </div>
+          </div>
+        </div>
+      <%end%>
+
+    </div>
+  </div>
+
+  
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Este es un proyecto de uso libre</h5>
+          <p class="grey-text text-lighten-4">Para mas informacion consulte los terminos y condici/html/evidencias.htmlneEvidencias</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>

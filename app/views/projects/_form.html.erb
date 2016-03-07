@@ -1,0 +1,19 @@
+
+<%=form_for @project do |f|%>
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Crear New Project</h4>
+    	
+			<%=f.label :title%>
+			<%=f.text_field :title%>
+			<%=f.label :description%>
+			<%=f.text_area :description%>
+			<%=f.label :visibility%>
+			<%=f.check_box :visibility%>
+		
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><%=f.submit "guardar"%></a>
+    </div>
+</div>
+<%end%>

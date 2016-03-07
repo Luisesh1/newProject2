@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NewProject</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><%=link_to "+ New Project",root_path,id:"logo-container",class:"brand-logo"%>
+      <ul class="right hide-on-med-and-down">
+        <%=render "partials/items"%>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+       	<%=render "partials/items"%>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <script type="text/javascript">Materialize.toast('<%= notice %>', 6000, 'rounded')</script>
+  <script type="text/javascript">Materialize.toast('<%= alert %>', 6000, 'rounded')</script>
+<%= yield %>
+
+<%= javascript_include_tag 'initm'%>
+</body>
+</html>
